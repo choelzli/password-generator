@@ -9,6 +9,21 @@ function generatePassword() {
   var specialchar = ["!", '"', "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "]", "^", "_", "`", "{", "|", "}", "~", '"']
   var numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
   var megaArray = upperLetters.concat(lowerLetters, specialchar, numbers);
+
+  var selectlength = window.prompt("Enter length of password");
+  if (selectlength < 8 || selectlength > 128) {
+    window.alert("Length not valid. Try again");
+    return;
+  }
+  
+  var selectupper = window.confirm("Do you want to use uppercase letters?");
+  var selectlower = window.confirm("Do you want to use lowercase letters?");
+  var selectspec = window.confirm("Do you want to use special characters?");
+  var selectnum = window.confirm("Do you want to use numbers?");
+  if (!selectupper && !selectlower && !selectspec && !selectnum) {
+    window.alert("Input not valid. Try again");
+    return;
+  }
 }
 
 function writePassword() {
