@@ -34,32 +34,42 @@ function generatePassword() {
     unfinishedPassword.push(firstUpper);
     } else {
       megaArray.splice(megaArray.lastIndexOf("A"),upperLetters.length);
-    }
+  }
     
-    if (selectlower) {
+  if (selectlower) {
     var ranNum = Math.floor(Math.random() * lowerLetters.length);
     let firstLower = lowerLetters[ranNum];
     unfinishedPassword.push(firstLower);
     } else {
       megaArray.splice(megaArray.lastIndexOf("a"),lowerLetters.length);
-    }
+  }
   
-    if (selectspec) {
+  if (selectspec) {
     var ranNum = Math.floor(Math.random() * specialchar.length);
     let firstSpecial = specialchar[ranNum];
     unfinishedPassword.push(firstSpecial);
     } else {
       megaArray.splice(megaArray.lastIndexOf("!"),specialchar.length);
-    }
+  }
   
-    if (selectnum) {
+  if (selectnum) {
     var ranNum = Math.floor(Math.random() * numbers.length);
     let firstnumber = numbers[ranNum];
     unfinishedPassword.push(firstnumber);
     } else {
       megaArray.splice(megaArray.lastIndexOf("1"),numbers.length);
-    }
+  }
   
+  // Generate rest of password with for loop
+  for (let i = unfinishedPassword.length; i < selectlength; i++) {
+      var ranNumCharacter = Math.floor(Math.random() * megaArray.length);
+      var nextCharacter = megaArray[ranNumCharacter]
+      unfinishedPassword.push(nextCharacter);
+  }
+  
+  const finishedPassword = unfinishedPassword.join("");
+  
+  return (finishedPassword);
 }
 
 function writePassword() {
